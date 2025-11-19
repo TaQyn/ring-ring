@@ -1,0 +1,218 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.call-screen {
+    height: 100dvh;
+    /* dynamic viewport */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.background-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Nền gradient đen -> hồng đậm */
+    background: linear-gradient(135deg, #190184, #ed0d7d);
+    /* Không cần filter nữa */
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    color: white;
+}
+
+.caller-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* xếp ảnh + tên + text theo cột */
+    align-items: center;
+    /* căn giữa ngang */
+    justify-content: center;
+    /* căn giữa dọc nếu muốn */
+}
+
+
+.caller-info img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+}
+
+/* Vòng lan tỏa ngay dưới ảnh */
+.ripple-circle {
+    position: absolute;
+    top: 50%;
+    /* tâm trùng với ảnh */
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 105, 180, 0.3);
+    /* hồng nhạt */
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 0;
+    animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+.caller-info h2 {
+
+    font-size: 28px;
+}
+
+.caller-info p {
+    margin: 0;
+    font-size: 18px;
+    color: #ccc;
+}
+
+.dual-slider {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    /* khoảng cách giữa 2 slider */
+    width: 60%;
+    margin: 0 auto;
+}
+
+.icon-img {
+    width: 36px;
+    /* chiều rộng nhỏ như icon */
+    height: 36px;
+    /* chiều cao tương ứng */
+    object-fit: contain;
+    /* giữ tỉ lệ ảnh */
+    vertical-align: middle;
+    /* căn giữa nếu dùng inline */
+}
+
+.slider-container {
+    position: relative;
+    width: 40%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    margin-bottom: 80px;
+    overflow: hidden;
+
+}
+
+.slider {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: grab;
+    user-select: none;
+    transition: left 0.2s;
+}
+
+.slider-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    color: black;
+    /* chữ nền đen */
+    pointer-events: none;
+
+    /* gradient ánh sáng trắng lướt qua */
+    background: linear-gradient(90deg, black 0%, white 50%, black 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: lightSlide 5s linear infinite;
+}
+
+@keyframes lightSlide {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.slider-icons {
+    width: 80%;
+    margin-top: 40px;
+    /* đẩy xuống */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.slider-icons span {
+    font-size: 28px;
+    /* kích thước icon */
+    color: white;
+    /* màu icon */
+}
+
+.toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+}

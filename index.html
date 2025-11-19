@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoming Call</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="call-screen">
+        <div class="background-img"></div>
+        <div class="overlay">
+            <div class="caller-info">
+                <img src="https://i.postimg.cc/fyKZtRbQ/em.jpg" alt="Caller">
+                <div class="ripple-circle"></div>
+                <h2>Thảo Quyên</h2>
+                <p>Incoming Call</p>
+            </div>
+
+
+            <div class="dual-slider">
+                <div class="slider-container" id="declineSlider">
+                    <div class="slider" style="background: #e81c1c;">
+                        <img src="https://i.postimg.cc/KjFx8Mmb/calm.png" class="icon-img" alt="Từ chối">
+                    </div>
+                    <span class="slider-text">Trượt để từ chối</span>
+                </div>
+
+                <div class="slider-container" id="acceptSlider">
+                    <div class="slider" style="background: #07ba1c;">
+                        <img src="https://i.postimg.cc/PJhT5wTc/call.png" class="icon-img" alt="Nhận">
+                    </div>
+                    <span class="slider-text">Trượt để trả lời</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <audio id="ringtone" loop>
+        <source src="audio/ringtone.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
